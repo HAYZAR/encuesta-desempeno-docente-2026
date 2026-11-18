@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encuesta de desempeño docente 2026 · Física</title>
+<meta name="description" content="Encuesta anónima de percepción sobre el desempeño docente 2026 · IED Los Rosales · Área de Física. Guía 31 del MEN.">
+<meta name="theme-color" content="#0A0E1A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0E1A'/%3E%3Ctext x='32' y='42' font-family='Georgia' font-size='28' font-weight='700' fill='%23F5F1E8' text-anchor='middle'%3EH%3Ctspan fill='%23F2994A' font-size='16' dy='-12'%3E2%3C/tspan%3E%3Ctspan dy='12'%3EB%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0A0E1A; --navy:#1B2A4A; --navy-2:#24365c; --card:rgba(20,30,54,.78);
+  --line:rgba(245,241,232,.10); --line-2:rgba(245,241,232,.18);
+  --text:#F5F1E8; --muted:#A9B1C4; --dim:#54607A;
+  --orange:#F2994A; --red:#D64545; --green:#4ADE80; --cyan:#38BDF8;
+  --radius:18px; --shadow:0 24px 60px -24px rgba(0,0,0,.65);
+  --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+body{min-height:100vh;overflow-x:hidden}
+#fondo{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.velo{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(1200px 700px at 85% -10%,rgba(56,189,248,.10),transparent 60%),
+             radial-gradient(900px 600px at -10% 110%,rgba(242,153,74,.10),transparent 60%)}
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:28px 16px 80px}
+
+/* Encabezado */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px}
+.marca{display:flex;align-items:center;gap:12px}
+.logo{font-family:var(--serif);font-weight:700;font-size:30px;line-height:1;letter-spacing:-.5px;position:relative;padding-bottom:6px}
+.logo sup{color:var(--orange);font-size:.55em;margin-left:1px}
+.logo::after{content:"";position:absolute;left:0;right:-4px;bottom:0;height:6px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M2 7 Q50 1 98 6' stroke='%23F2994A' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
+.marca small{display:block;color:var(--muted);font-size:12px;letter-spacing:.3px}
+.pastilla{font-family:var(--mono);font-size:11px;letter-spacing:1.6px;padding:7px 12px;border-radius:999px;
+  border:1px solid rgba(242,153,74,.45);color:var(--orange);background:rgba(242,153,74,.08);white-space:nowrap}
+
+/* Tarjeta */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:clamp(22px,4vw,40px)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin:0 0 10px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,5.4vw,48px);line-height:1.08;letter-spacing:-.8px;margin:0 0 16px}
+h1 em{font-style:italic;color:var(--orange);font-weight:400}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.6vw,32px);letter-spacing:-.4px;margin:0 0 6px}
+h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:30px 0 4px;display:flex;align-items:baseline;gap:10px}
+h3 .cod{font-family:var(--mono);font-size:11px;color:var(--orange);border:1px solid rgba(242,153,74,.4);border-radius:6px;padding:2px 6px;letter-spacing:1px}
+p.lead{color:var(--muted);font-size:17px;line-height:1.6;margin:0 0 22px;max-width:62ch}
+p.sub{color:var(--muted);margin:0 0 6px;line-height:1.55}
+.datos{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:24px 0}
+.dato{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:rgba(10,14,26,.35)}
+.dato b{display:block;font-size:11px;font-family:var(--mono);letter-spacing:1.2px;color:var(--dim);text-transform:uppercase;margin-bottom:4px}
+.dato span{font-size:15px}
+.marco{font-size:13px;color:var(--muted);border-left:2px solid var(--orange);padding:4px 0 4px 14px;margin:20px 0 26px;line-height:1.6}
+
+/* Escala */
+.leyenda{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted);margin:14px 0 4px}
+.leyenda b{color:var(--text);font-family:var(--mono)}
+.item{padding:18px 0;border-top:1px solid var(--line)}
+.item:first-of-type{border-top:0}
+.item p{margin:0 0 12px;line-height:1.5;font-size:16px}
+.item.falta p{color:#ffb4b4}
+.item.falta p::before{content:"● ";color:var(--red)}
+.escala{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.escala input{position:absolute;opacity:0;pointer-events:none}
+.escala label{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:58px;padding:8px 4px;
+  border:1px solid var(--line-2);border-radius:12px;cursor:pointer;transition:all .18s ease;background:rgba(10,14,26,.35);text-align:center}
+.escala label .n{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1}
+.escala label .t{font-size:11px;color:var(--muted);line-height:1.2}
+.escala label:hover{border-color:rgba(242,153,74,.6);transform:translateY(-1px)}
+.escala input:focus-visible + label{outline:2px solid var(--cyan);outline-offset:2px}
+.escala input:checked + label{background:linear-gradient(160deg,var(--orange),#e07b2c);border-color:var(--orange);color:#1a1006;
+  box-shadow:0 8px 22px -8px rgba(242,153,74,.7)}
+.escala input:checked + label .t{color:#3b2410}
+
+/* Campos */
+fieldset{border:0;padding:0;margin:0 0 24px}
+legend{font-weight:600;margin-bottom:10px;font-size:16px}
+.opciones{display:flex;flex-wrap:wrap;gap:10px}
+.opcion input{position:absolute;opacity:0}
+.opcion label{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;border:1px solid var(--line-2);border-radius:12px;cursor:pointer;
+  background:rgba(10,14,26,.35);transition:all .18s}
+.opcion label::before{content:"";width:14px;height:14px;border-radius:50%;border:2px solid var(--dim);transition:all .18s}
+.opcion input:checked + label{border-color:var(--orange);background:rgba(242,153,74,.10)}
+.opcion input:checked + label::before{border-color:var(--orange);background:var(--orange);box-shadow:0 0 0 3px rgba(242,153,74,.2)}
+.opcion input:focus-visible + label{outline:2px solid var(--cyan);outline-offset:2px}
+.consent{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line-2);border-radius:12px;cursor:pointer;background:rgba(10,14,26,.35);line-height:1.5;font-size:14.5px;color:var(--muted)}
+.consent input{accent-color:var(--orange);width:18px;height:18px;margin-top:2px;flex:none}
+textarea{width:100%;min-height:120px;resize:vertical;padding:14px 16px;border-radius:12px;border:1px solid var(--line-2);background:rgba(10,14,26,.5);
+  color:var(--text);font:inherit;font-size:15.5px;line-height:1.5}
+textarea:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(242,153,74,.15)}
+label.campo{display:block;font-weight:600;margin:22px 0 10px}
+.trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* Navegación */
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:32px;flex-wrap:wrap}
+.btn{appearance:none;border:0;border-radius:999px;padding:14px 26px;font:600 15px var(--sans);cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:10px}
+.btn.pri{background:var(--orange);color:#1a1006;box-shadow:0 10px 28px -10px rgba(242,153,74,.8)}
+.btn.pri:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.btn.sec{background:transparent;color:var(--muted);border:1px solid var(--line-2)}
+.btn.sec:hover{color:var(--text);border-color:var(--muted)}
+.btn:disabled{opacity:.55;cursor:wait;transform:none}
+.aviso{color:#ffb4b4;font-size:14px;min-height:20px;margin:14px 0 0}
+
+/* Progreso */
+.progreso{position:sticky;top:0;z-index:5;margin:0 -16px 22px;padding:12px 16px;background:linear-gradient(var(--bg) 70%,transparent)}
+.progreso .barra{height:4px;border-radius:4px;background:rgba(245,241,232,.08);overflow:hidden}
+.progreso .barra i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--orange));transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.progreso .meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--muted);margin-top:8px;text-transform:uppercase}
+.oculto{display:none!important}
+
+/* Transición de pasos */
+.paso{animation:entra .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* Final */
+.final{text-align:center;padding:20px 0}
+.final .orbita{width:120px;height:120px;margin:0 auto 18px}
+.pie{text-align:center;color:var(--dim);font-size:12px;margin-top:28px;line-height:1.7}
+.pie b{color:var(--muted);font-weight:500}
+
+@media (max-width:560px){
+  .escala{gap:6px}
+  .escala label{min-height:54px}
+  .escala label .t{font-size:9.5px}
+  .pastilla{display:none}
+  .nav .btn{flex:1;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="fondo" aria-hidden="true"></canvas>
+<div class="velo" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="marca">
+      <div class="logo">H<sup>2</sup>B</div>
+      <div><strong id="inst">IED Los Rosales</strong><small>Física con sentido</small></div>
+    </div>
+    <div class="pastilla">H²B · FÍSICA BÁSICA</div>
+  </header>
+
+  <div class="progreso oculto" id="progreso">
+    <div class="barra"><i id="barra"></i></div>
+    <div class="meta"><span id="pasoNombre"></span><span id="pasoNum"></span></div>
+  </div>
+
+  <main class="card" id="app" aria-live="polite"></main>
+
+  <p class="pie">Evidencia para la Evaluación Anual de Desempeño Laboral · Decreto Ley 1278 de 2002 · Decreto 1075 de 2015 · <b>Guía No. 31 del MEN</b><br>
+  Encuesta anónima · Tratamiento de datos según la Ley 1581 de 2012</p>
+</div>
+
+<script>
+/* ═════════════════ CONFIGURACIÓN ═════════════════ */
+const CONFIG = {
+  // Pegue aquí la URL de la aplicación web de Apps Script (termina en /exec).
+  ENDPOINT: '',
+  DOCENTE: 'Docente de Física',
+  INSTITUCION: 'IED Los Rosales',
+  AREA: 'Física',
+  ANIO: 2026,
+  GRADOS: ['10°', '11°'],
+  CIERRE: '', // opcional, p. ej. '2026-12-05': después de esa fecha la encuesta se muestra cerrada
+};
+
+const ESCALA = [[1,'Nunca'],[2,'Casi nunca'],[3,'A veces'],[4,'Casi siempre'],[5,'Siempre']];
+
+/* Competencias de la Guía 31. E = estudiantes, A = acudientes. */
+const COMP = [
+  {cod:'DC',tipo:'F',area:'Gestión académica',nombre:'Dominio curricular',
+   E:['Demuestra dominio de los temas de Física y los explica con claridad.',
+      'Relaciona los conceptos de Física con situaciones de la vida cotidiana, la ciencia y la tecnología.',
+      'Responde con seguridad y precisión las preguntas que hacemos en clase.',
+      'Usa correctamente el lenguaje científico, las unidades y las representaciones (gráficas, tablas, ecuaciones).'],
+   A:['Mi hijo(a) manifiesta que el docente explica los temas de forma clara y comprensible.']},
+  {cod:'PO',tipo:'F',area:'Gestión académica',nombre:'Planeación y organización académica',
+   E:['Al iniciar cada periodo da a conocer los temas, desempeños esperados y criterios de evaluación.',
+      'Las clases están bien organizadas: tienen un inicio, un desarrollo y un cierre claros.',
+      'Aprovecha adecuadamente el tiempo de clase.',
+      'Las guías, talleres y actividades están relacionadas con lo que se trabaja en clase.'],
+   A:['Las tareas y actividades que asigna son pertinentes y tienen un propósito claro.']},
+  {cod:'PD',tipo:'F',area:'Gestión académica',nombre:'Pedagogía y didáctica',
+   E:['Utiliza estrategias variadas (experimentos, simulaciones, videos, resolución de problemas, trabajo en grupo).',
+      'Usa herramientas tecnológicas (TIC) que facilitan el aprendizaje.',
+      'Tiene en cuenta los diferentes ritmos y formas de aprender de los estudiantes.',
+      'Motiva la participación, la pregunta y el pensamiento crítico.',
+      'Despierta el interés por la Física y la ciencia.'],
+   A:['Mi hijo(a) se muestra motivado(a) frente a la asignatura de Física.']},
+  {cod:'EA',tipo:'F',area:'Gestión académica',nombre:'Evaluación del aprendizaje',
+   E:['Evalúa con diferentes instrumentos (talleres, laboratorios, pruebas, proyectos, exposiciones).',
+      'Las evaluaciones corresponden a lo trabajado en clase.',
+      'Entrega los resultados a tiempo y retroalimenta los errores para mejorar.',
+      'Ofrece actividades de refuerzo, apoyo o nivelación a quienes lo necesitan.',
+      'Promueve la autoevaluación y la coevaluación.'],
+   A:['Los criterios con los que se evalúa a mi hijo(a) son claros y justos.',
+      'Ofrece oportunidades de refuerzo y nivelación cuando mi hijo(a) presenta dificultades.']},
+  {cod:'UR',tipo:'F',area:'Gestión administrativa',nombre:'Uso de recursos',
+   E:['Promueve el buen uso y cuidado del laboratorio, los materiales y los equipos de la institución.',
+      'Aprovecha los recursos disponibles (laboratorio, sala de informática, materiales reciclables, plataformas).'],
+   A:[]},
+  {cod:'SP',tipo:'F',area:'Gestión administrativa',nombre:'Seguimiento de procesos',
+   E:['Lleva un registro organizado de asistencia, trabajos y calificaciones.',
+      'Me informa oportunamente cómo voy en la asignatura y qué debo mejorar.'],
+   A:['Me informa oportunamente sobre el desempeño académico y el comportamiento de mi hijo(a).',
+      'Realiza seguimiento a los compromisos acordados con la familia.']},
+  {cod:'CI',tipo:'F',area:'Gestión comunitaria',nombre:'Comunicación institucional',
+   E:['Da a conocer y aplica el Manual de Convivencia y el Sistema Institucional de Evaluación (SIE).'],
+   A:['Utiliza canales de comunicación adecuados y respetuosos con las familias (agenda, plataforma, reuniones).',
+      'Atiende a los acudientes en los horarios establecidos y con disposición.']},
+  {cod:'IC',tipo:'F',area:'Gestión comunitaria',nombre:'Interacción con la comunidad y el entorno',
+   E:['Relaciona los temas con problemas de nuestro entorno (energía, ambiente, transporte, tecnología).',
+      'Promueve actividades o proyectos que vinculan a la institución con la comunidad (ferias, salidas, proyectos).'],
+   A:['Brinda orientaciones para que la familia pueda apoyar el aprendizaje en casa.',
+      'Promueve la participación de las familias en actividades institucionales.']},
+  {cod:'LI',tipo:'C',area:'Comportamentales',nombre:'Liderazgo',
+   E:['Orienta al grupo con autoridad y respeto, y es un ejemplo positivo para los estudiantes.'],
+   A:['Es un referente positivo para mi hijo(a).']},
+  {cod:'CR',tipo:'C',area:'Comportamentales',nombre:'Comunicación y relaciones interpersonales',
+   E:['Trata a los estudiantes con respeto y amabilidad.','Escucha nuestras opiniones, inquietudes y sugerencias.'],
+   A:['Trata con respeto y cordialidad a los estudiantes y a sus familias.']},
+  {cod:'TE',tipo:'C',area:'Comportamentales',nombre:'Trabajo en equipo',
+   E:['Fomenta el trabajo colaborativo y el apoyo entre compañeros.'],A:[]},
+  {cod:'NM',tipo:'C',area:'Comportamentales',nombre:'Negociación y mediación',
+   E:['Maneja los conflictos del aula de manera justa, por medio del diálogo y la concertación.'],
+   A:['Ante dificultades o desacuerdos, busca soluciones mediante el diálogo.']},
+  {cod:'CS',tipo:'C',area:'Comportamentales',nombre:'Compromiso social e institucional',
+   E:['Es puntual y cumple con el horario de clase.','Promueve valores como la honestidad, la responsabilidad y el cuidado del ambiente.'],
+   A:['Demuestra compromiso con la formación integral de mi hijo(a).']},
+  {cod:'IN',tipo:'C',area:'Comportamentales',nombre:'Iniciativa',
+   E:['Propone actividades novedosas y creativas para aprender (retos, proyectos, laboratorios, videos).'],A:[]},
+  {cod:'OL',tipo:'C',area:'Comportamentales',nombre:'Orientación al logro',
+   E:['Tiene altas expectativas de lo que podemos lograr y nos anima a superarnos.','Se esfuerza para que todos los estudiantes aprendan.'],
+   A:['Se preocupa porque mi hijo(a) alcance los desempeños esperados.']},
+];
+
+const PASOS = [
+  {titulo:'Gestión académica · I',   sub:'Competencias funcionales: lo que el docente sabe y cómo planea sus clases.', cods:['DC','PO']},
+  {titulo:'Gestión académica · II',  sub:'Competencias funcionales: cómo enseña y cómo evalúa.', cods:['PD','EA']},
+  {titulo:'Gestión administrativa y comunitaria', sub:'Competencias funcionales: recursos, seguimiento y relación con la comunidad.', cods:['UR','SP','CI','IC']},
+  {titulo:'Competencias comportamentales', sub:'Actitudes y forma de relacionarse con los demás.', cods:['LI','CR','TE','NM','CS','IN','OL']},
+];
+
+const ABIERTAS = {
+  E:[['fortalezas','¿Qué es lo que más valoras de las clases de este docente?'],['mejoras','¿Qué le recomiendas mejorar?']],
+  A:[['fortalezas','¿Qué fortalezas reconoce en el trabajo de este docente?'],['mejoras','¿Qué sugerencias le haría para mejorar?']],
+};
+
+/* ═════════════════ ESTADO Y RENDER ═════════════════ */
+const app = document.getElementById('app');
+const est = {rol:null, grado:null, r:{}, abiertas:{}, paso:0, inicio:null};
+let pasosRol = [];
+
+const $ = s => app.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const yaRespondio = () => { try { return localStorage.getItem('h2b-encuesta-'+CONFIG.ANIO) === '1'; } catch { return false; } };
+
+function progreso(mostrar, nombre='', i=0, n=1){
+  document.getElementById('progreso').classList.toggle('oculto', !mostrar);
+  document.getElementById('pasoNombre').textContent = nombre;
+  document.getElementById('pasoNum').textContent = mostrar ? `Paso ${i} de ${n}` : '';
+  document.getElementById('barra').style.width = (100*i/n)+'%';
+}
+function montar(html){ app.innerHTML = `<div class="paso">${html}</div>`; window.scrollTo({top:0,behavior:'smooth'}); }
+
+function bienvenida(){
+  progreso(false);
+  const cerrada = CONFIG.CIERRE && new Date() > new Date(CONFIG.CIERRE+'T23:59:59');
+  montar(`
+    <p class="eyebrow">Evaluación de desempeño · ${CONFIG.ANIO}</p>
+    <h1>Tu opinión también <em>mueve</em> la enseñanza.</h1>
+    <p class="lead">Esta encuesta recoge la percepción de estudiantes y familias sobre el trabajo del docente de ${esc(CONFIG.AREA)} durante el año ${CONFIG.ANIO}. Es anónima, toma unos 7 minutos y sus resultados se usan como evidencia de la evaluación anual de desempeño y para mejorar las clases.</p>
+    <div class="datos">
+      <div class="dato"><b>Institución</b><span>${esc(CONFIG.INSTITUCION)}</span></div>
+      <div class="dato"><b>Docente</b><span>${esc(CONFIG.DOCENTE)}</span></div>
+      <div class="dato"><b>Área</b><span>${esc(CONFIG.AREA)}</span></div>
+      <div class="dato"><b>Duración</b><span>≈ 7 minutos · anónima</span></div>
+    </div>
+    ${CONFIG.ENDPOINT ? '' : '<p class="aviso">Modo de prueba: esta versión todavía no guarda las respuestas.</p>'}
+    <p class="marco">Las preguntas siguen las competencias de la <b>Guía No. 31 del MEN</b>: funcionales (gestión académica, administrativa y comunitaria) y comportamentales.</p>
+    ${cerrada ? `<p class="aviso">La encuesta cerró el ${esc(CONFIG.CIERRE)}. ¡Gracias por tu interés!</p>` :
+      yaRespondio() ? `<p class="sub">Ya enviaste una respuesta desde este dispositivo. Si alguien más va a responder aquí, puede continuar.</p>
+        <div class="nav"><span></span><button class="btn pri" id="ir">Responder de nuevo →</button></div>` :
+      `<div class="nav"><span></span><button class="btn pri" id="ir">Comenzar →</button></div>`}
+  `);
+  const b = $('#ir'); if (b) b.onclick = datosGenerales;
+}
+
+function datosGenerales(){
+  est.inicio = est.inicio || Date.now();
+  progreso(true, 'Datos generales', 0, PASOS.length + 2);
+  const op = (name, arr, sel) => arr.map((v,i)=>`<span class="opcion"><input type="radio" name="${name}" id="${name}${i}" value="${esc(v)}" ${sel===v?'checked':''}><label for="${name}${i}">${esc(v)}</label></span>`).join('');
+  montar(`
+    <p class="eyebrow">Antes de empezar</p>
+    <h2>¿Quién responde?</h2>
+    <p class="sub">Según tu respuesta verás preguntas pensadas para estudiantes o para familias.</p>
+    <fieldset style="margin-top:22px"><legend>Respondo como</legend><div class="opciones">${op('rol',['Estudiante','Madre, padre o acudiente'],est.rol)}</div></fieldset>
+    <fieldset><legend>Grado del estudiante</legend><div class="opciones">${op('grado',CONFIG.GRADOS,est.grado)}</div></fieldset>
+    <label class="consent"><input type="checkbox" id="acepto" ${est.acepto?'checked':''}>
+      <span>Autorizo el tratamiento de mis respuestas con fines de evaluación y mejoramiento institucional (Ley 1581 de 2012). Entiendo que la encuesta es anónima y voluntaria.</span></label>
+    <p class="aviso" id="aviso"></p>
+    <div class="nav"><button class="btn sec" id="atras">← Inicio</button><button class="btn pri" id="sig">Continuar →</button></div>
+  `);
+  $('#atras').onclick = bienvenida;
+  $('#sig').onclick = () => {
+    const rol = app.querySelector('input[name=rol]:checked'), gr = app.querySelector('input[name=grado]:checked');
+    est.acepto = $('#acepto').checked;
+    if (!rol || !gr || !est.acepto){ $('#aviso').textContent = 'Selecciona quién responde, el grado y acepta la autorización para continuar.'; return; }
+    if (est.rol && est.rol !== rol.value) est.r = {};
+    est.rol = rol.value; est.grado = gr.value;
+    const p = est.rol === 'Estudiante' ? 'E' : 'A';
+    pasosRol = PASOS.map(ps => ({...ps, comps: COMP.filter(c => ps.cods.includes(c.cod) && c[p].length)})).filter(ps => ps.comps.length);
+    est.paso = 0; pasoLikert();
+  };
+}
+
+const pub = () => est.rol === 'Estudiante' ? 'E' : 'A';
+
+function pasoLikert(){
+  const ps = pasosRol[est.paso], p = pub(), total = pasosRol.length + 2;
+  progreso(true, ps.titulo, est.paso + 1, total);
+  const leyenda = ESCALA.map(([n,t])=>`<span><b>${n}</b> ${t}</span>`).join('');
+  const bloques = ps.comps.map(c => `
+    <h3><span class="cod">${c.cod}</span>${esc(c.nombre)}</h3>
+    ${c[p].map((txt,i) => { const k = `${c.cod}-${p}-${i+1}`; return `
+      <div class="item" data-k="${k}" role="radiogroup" aria-label="${esc(txt)}">
+        <p>${esc(txt)}</p>
+        <div class="escala">${ESCALA.map(([n,t]) => `<input type="radio" name="${k}" id="${k}_${n}" value="${n}" ${est.r[k]==n?'checked':''}><label for="${k}_${n}"><span class="n">${n}</span><span class="t">${t}</span></label>`).join('')}</div>
+      </div>`; }).join('')}`).join('');
+  montar(`
+    <p class="eyebrow">${ps.comps[0].tipo==='F'?'Competencias funcionales · 70 %':'Competencias comportamentales · 30 %'}</p>
+    <h2>${esc(ps.titulo)}</h2>
+    <p class="sub">${esc(ps.sub)} Marca con qué frecuencia el docente hace cada cosa.</p>
+    <div class="leyenda">${leyenda}</div>
+    ${bloques}
+    <p class="aviso" id="aviso"></p>
+    <div class="nav"><button class="btn sec" id="atras">← Atrás</button><button class="btn pri" id="sig">Continuar →</button></div>
+  `);
+  app.querySelectorAll('.escala input').forEach(inp => inp.onchange = () => {
+    est.r[inp.name] = +inp.value; inp.closest('.item').classList.remove('falta');
+  });
+  $('#atras').onclick = () => { if (est.paso === 0) datosGenerales(); else { est.paso--; pasoLikert(); } };
+  $('#sig').onclick = () => {
+    const faltan = [...app.querySelectorAll('.item')].filter(it => !est.r[it.dataset.k]);
+    faltan.forEach(it => it.classList.add('falta'));
+    if (faltan.length){ $('#aviso').textContent = `Falta${faltan.length>1?'n':''} ${faltan.length} afirmaci${faltan.length>1?'ones':'ón'} por responder.`; faltan[0].scrollIntoView({behavior:'smooth',block:'center'}); return; }
+    if (est.paso < pasosRol.length - 1){ est.paso++; pasoLikert(); } else pasoAbiertas();
+  };
+}
+
+function pasoAbiertas(){
+  const p = pub(), total = pasosRol.length + 2;
+  progreso(true, 'Comentarios', total - 1, total);
+  montar(`
+    <p class="eyebrow">Para cerrar</p>
+    <h2>En tus palabras</h2>
+    <p class="sub">Opcional, pero muy valioso. No escribas nombres propios.</p>
+    ${ABIERTAS[p].map(([k,t]) => `<label class="campo" for="ab_${k}">${esc(t)}</label><textarea id="ab_${k}" maxlength="1500" placeholder="Escribe aquí…">${esc(est.abiertas[k]||'')}</textarea>`).join('')}
+    <div class="trampa" aria-hidden="true"><label>No llenar <input id="web" tabindex="-1" autocomplete="off"></label></div>
+    <p class="aviso" id="aviso"></p>
+    <div class="nav"><button class="btn sec" id="atras">← Atrás</button><button class="btn pri" id="enviar">Enviar encuesta ✓</button></div>
+  `);
+  const guarda = () => ABIERTAS[p].forEach(([k]) => est.abiertas[k] = $('#ab_'+k).value.trim());
+  $('#atras').onclick = () => { guarda(); est.paso = pasosRol.length - 1; pasoLikert(); };
+  $('#enviar').onclick = async () => {
+    guarda();
+    const btn = $('#enviar'); btn.disabled = true; btn.textContent = 'Enviando…';
+    const textos = {};
+    pasosRol.forEach(ps => ps.comps.forEach(c => c[p].forEach((t,i) => textos[`${c.cod}-${p}-${i+1}`] = t)));
+    const datos = { anio:CONFIG.ANIO, docente:CONFIG.DOCENTE, rol:est.rol, grado:est.grado,
+      respuestas:est.r, textos, abiertas:est.abiertas, segundos:Math.round((Date.now()-est.inicio)/1000), web:$('#web').value };
+    try {
+      await enviar(datos);
+      try { localStorage.setItem('h2b-encuesta-'+CONFIG.ANIO,'1'); } catch {}
+      final();
+    } catch (e) {
+      btn.disabled = false; btn.textContent = 'Reintentar envío';
+      $('#aviso').textContent = 'No se pudo enviar. Revisa tu conexión a internet e inténtalo de nuevo.';
+    }
+  };
+}
+
+async function enviar(datos){
+  if (!CONFIG.ENDPOINT){ console.info('[modo prueba] Datos que se enviarían:', datos); await new Promise(r=>setTimeout(r,700)); return; }
+  const cuerpo = JSON.stringify(datos);
+  try {
+    const res = await fetch(CONFIG.ENDPOINT, {method:'POST', body:cuerpo, headers:{'Content-Type':'text/plain;charset=utf-8'}});
+    const j = await res.json();
+    if (!j.ok) throw new Error(j.error || 'error');
+  } catch (e) {
+    if (e instanceof TypeError) { await fetch(CONFIG.ENDPOINT, {method:'POST', mode:'no-cors', body:cuerpo}); return; }
+    throw e;
+  }
+}
+
+function final(){
+  progreso(true, '¡Enviado!', 1, 1);
+  montar(`<div class="final">
+    <svg class="orbita" viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="44" fill="none" stroke="rgba(245,241,232,.15)" stroke-dasharray="3 6"/>
+      <circle cx="60" cy="60" r="14" fill="#F2994A"/>
+      <circle r="6" fill="#38BDF8"><animateMotion dur="4s" repeatCount="indefinite" path="M60,16 a44,44 0 1,1 -0.1,0"/></circle>
+      <path d="M52 61 l6 6 l12 -14" stroke="#1a1006" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="eyebrow">Respuesta recibida</p>
+    <h2>¡Gracias por tu tiempo!</h2>
+    <p class="sub" style="max-width:48ch;margin:10px auto 0">Tu opinión es una fuerza más en el sistema: ayuda a que la enseñanza de la ${esc(CONFIG.AREA)} tenga cada vez más sentido.</p>
+    <p class="pie" style="margin-top:26px">H²B · Física con sentido</p>
+  </div>`);
+}
+
+/* ═════════════════ FONDO AMBIENTADO ═════════════════
+   Proyectiles en tiro parabólico, ecuaciones flotantes y una retícula tenue. */
+(function fondo(){
+  const cv = document.getElementById('fondo'), ctx = cv.getContext('2d');
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ecs = ['F = ma','ΣF = 0','p = mv','W = F·d','E = ½mv²','v = v₀ + at','g ≈ 9,8 m/s²','τ = r × F','P = W/t','x = v₀t + ½at²'];
+  let W, H, dpr, flot = [], tiros = [];
+  function tam(){
+    dpr = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight;
+    cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    flot = ecs.slice(0, W < 600 ? 5 : 10).map((t,i) => ({t, x:Math.random()*W, y:Math.random()*H, v:6+Math.random()*8, a:.04+Math.random()*.05, s:12+Math.random()*6}));
+  }
+  function nuevoTiro(){
+    const ang = (35 + Math.random()*35) * Math.PI/180, v0 = 0.55*Math.sqrt(W*W+H*H)*(.55+Math.random()*.35);
+    tiros.push({x0:-20, y0:H*(.75+Math.random()*.25), vx:v0*Math.cos(ang), vy:-v0*Math.sin(ang), g:v0*v0*Math.sin(2*ang)/(W*1.15), t:0,
+      col: Math.random()<.5 ? '242,153,74' : '56,189,248', tray:[]});
+  }
+  function reticula(){
+    ctx.strokeStyle = 'rgba(245,241,232,.035)'; ctx.lineWidth = 1;
+    for (let x = 0; x < W; x += 48){ ctx.beginPath(); ctx.moveTo(x+.5,0); ctx.lineTo(x+.5,H); ctx.stroke(); }
+    for (let y = 0; y < H; y += 48){ ctx.beginPath(); ctx.moveTo(0,y+.5); ctx.lineTo(W,y+.5); ctx.stroke(); }
+  }
+  let ult = performance.now(), acum = 2;
+  function cuadro(ahora){
+    const dt = Math.min((ahora-ult)/1000, .05); ult = ahora;
+    ctx.clearRect(0,0,W,H); reticula();
+    ctx.font = '500 14px "JetBrains Mono", monospace';
+    flot.forEach(f => { f.y -= f.v*dt; if (f.y < -20){ f.y = H+20; f.x = Math.random()*W; }
+      ctx.font = `500 ${f.s}px "JetBrains Mono", monospace`; ctx.fillStyle = `rgba(245,241,232,${f.a})`; ctx.fillText(f.t, f.x, f.y); });
+    acum += dt; if (acum > 3.2 && tiros.length < 3){ acum = 0; nuevoTiro(); }
+    tiros.forEach(p => {
+      p.t += dt*.55;
+      const x = p.x0 + p.vx*p.t, y = p.y0 + p.vy*p.t + .5*p.g*p.t*p.t;
+      p.tray.push([x,y]); if (p.tray.length > 160) p.tray.shift();
+      ctx.beginPath(); p.tray.forEach(([a,b],i) => i ? ctx.lineTo(a,b) : ctx.moveTo(a,b));
+      ctx.strokeStyle = `rgba(${p.col},.22)`; ctx.setLineDash([4,7]); ctx.lineWidth = 1.4; ctx.stroke(); ctx.setLineDash([]);
+      const vy = p.vy + p.g*p.t, m = Math.hypot(p.vx, vy);
+      ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x + p.vx/m*26, y + vy/m*26); ctx.strokeStyle = `rgba(${p.col},.45)`; ctx.lineWidth = 1.6; ctx.stroke();
+      ctx.beginPath(); ctx.arc(x,y,4,0,7); ctx.fillStyle = `rgba(${p.col},.75)`; ctx.fill();
+      p.fin = x > W+40 || y > H+40;
+    });
+    tiros = tiros.filter(p => !p.fin);
+    if (!quieto) requestAnimationFrame(cuadro);
+  }
+  addEventListener('resize', tam); tam();
+  if (quieto){ reticula(); } else { nuevoTiro(); requestAnimationFrame(cuadro); }
+})();
+
+document.getElementById('inst').textContent = CONFIG.INSTITUCION;
+bienvenida();
+</script>
+</body>
+</html>
