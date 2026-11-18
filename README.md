@@ -46,7 +46,7 @@ Cuando cambie `Codigo.gs`:
 En la hoja, use el menú **Encuesta H²B → Generar informe Guía 31**. Se crea la pestaña «Informe Guía 31» con:
 
 - el número de respuestas por público;
-- el promedio de cada competencia (estudiantes, acudientes y general) y su equivalencia en la escala 1–100 (promedio × 20);
+- el promedio de cada competencia (estudiantes, acudientes, docentes y general) y su equivalencia en la escala 1–100 (promedio × 20);
 - el nivel: Sobresaliente 90–100 · Satisfactorio 60–89 · No satisfactorio 1–59;
 - la valoración ponderada: 70 % funcionales + 30 % comportamentales;
 - los comentarios abiertos.
