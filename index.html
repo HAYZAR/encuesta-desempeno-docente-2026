@@ -161,7 +161,7 @@ label.campo{display:block;font-weight:600;margin:22px 0 10px}
 const CONFIG = {
   // Pegue aquí la URL de la aplicación web de Apps Script (termina en /exec).
   ENDPOINT: 'https://script.google.com/macros/s/AKfycbxRUxRjG_aDkppT5BYPJqmj42-F_kGoZOWs6ssHIb2TFHLTkipmxJT-JA2GAiExv0QX/exec',
-  DOCENTE: 'Docente de Física',
+  DOCENTE: 'Hayzar Hernández Bustos',
   INSTITUCION: 'IED Los Rosales',
   AREA: 'Física',
   ANIO: 2026,
@@ -171,72 +171,118 @@ const CONFIG = {
 
 const ESCALA = [[1,'Nunca'],[2,'Casi nunca'],[3,'A veces'],[4,'Casi siempre'],[5,'Siempre']];
 
-/* Competencias de la Guía 31. E = estudiantes, A = acudientes. */
+/* Competencias de la Guía 31. E = estudiantes, A = acudientes, D = docentes y administrativos.
+   Integra las preguntas de las encuestas institucionales anteriores. */
 const COMP = [
   {cod:'DC',tipo:'F',area:'Gestión académica',nombre:'Dominio curricular',
-   E:['Demuestra dominio de los temas de Física y los explica con claridad.',
-      'Relaciona los conceptos de Física con situaciones de la vida cotidiana, la ciencia y la tecnología.',
-      'Responde con seguridad y precisión las preguntas que hacemos en clase.',
+   E:['Presenta los temas con claridad y demuestra dominio de la Física.',
+      'Responde las dudas de los estudiantes, tanto en clase como a distancia.',
+      'Trata los temas de manera que se puedan aplicar fuera del aula: en la vida cotidiana, la ciencia y la tecnología.',
       'Usa correctamente el lenguaje científico, las unidades y las representaciones (gráficas, tablas, ecuaciones).'],
-   A:['Mi hijo(a) manifiesta que el docente explica los temas de forma clara y comprensible.']},
+   A:['Mi hijo(a) manifiesta que el docente explica los temas de forma clara y comprensible.'],
+   D:['Aporta a la definición del currículo, intercambia sus experiencias pedagógicas con el grupo docente y produce nuevos materiales para la enseñanza.']},
   {cod:'PO',tipo:'F',area:'Gestión académica',nombre:'Planeación y organización académica',
-   E:['Al iniciar cada periodo da a conocer los temas, desempeños esperados y criterios de evaluación.',
+   E:['Comunica claramente los objetivos que se deben alcanzar en cada clase.',
+      'Al iniciar cada periodo da a conocer los temas y los desempeños esperados.',
       'Las clases están bien organizadas: tienen un inicio, un desarrollo y un cierre claros.',
-      'Aprovecha adecuadamente el tiempo de clase.',
       'Las guías, talleres y actividades están relacionadas con lo que se trabaja en clase.'],
-   A:['Las tareas y actividades que asigna son pertinentes y tienen un propósito claro.']},
+   A:['Las tareas y actividades que asigna son pertinentes y tienen un propósito claro.'],
+   D:['Entrega oportunamente sus planeaciones, informes y registros académicos.']},
   {cod:'PD',tipo:'F',area:'Gestión académica',nombre:'Pedagogía y didáctica',
-   E:['Utiliza estrategias variadas (experimentos, simulaciones, videos, resolución de problemas, trabajo en grupo).',
-      'Usa herramientas tecnológicas (TIC) que facilitan el aprendizaje.',
+   E:['Propicia el diálogo y la participación de los estudiantes durante la clase.',
+      'Sus clases son interesantes porque facilitan la participación de todo el curso.',
+      'Además del tablero, utiliza otros recursos didácticos: talleres, simulaciones, videos, experimentos, celulares, internet, exposiciones.',
       'Tiene en cuenta los diferentes ritmos y formas de aprender de los estudiantes.',
-      'Motiva la participación, la pregunta y el pensamiento crítico.',
       'Despierta el interés por la Física y la ciencia.'],
-   A:['Mi hijo(a) se muestra motivado(a) frente a la asignatura de Física.']},
+   A:['He observado motivación en mi hijo(a) al desarrollar las actividades de Ciencias Naturales – Física.'],
+   D:['Establece y socializa en clase reglas, normas y rutinas consistentes de convivencia en el aula, y consecuencias del comportamiento de los estudiantes.',
+      'Tiene dominio de grupo y mantiene la disciplina en el aula sin acudir al maltrato físico o psicológico.',
+      'Mantiene un ambiente organizado de trabajo.']},
   {cod:'EA',tipo:'F',area:'Gestión académica',nombre:'Evaluación del aprendizaje',
-   E:['Evalúa con diferentes instrumentos (talleres, laboratorios, pruebas, proyectos, exposiciones).',
-      'Las evaluaciones corresponden a lo trabajado en clase.',
+   E:['Explica los criterios de evaluación de la asignatura.',
+      'Evalúa teniendo en cuenta el saber pensar, el saber conocer y el saber ser o actuar.',
+      'Evalúa con diferentes instrumentos (talleres, laboratorios, pruebas, proyectos, exposiciones).',
       'Entrega los resultados a tiempo y retroalimenta los errores para mejorar.',
-      'Ofrece actividades de refuerzo, apoyo o nivelación a quienes lo necesitan.',
-      'Promueve la autoevaluación y la coevaluación.'],
+      'Realiza actividades de recuperación con los estudiantes que lo necesitan.'],
    A:['Los criterios con los que se evalúa a mi hijo(a) son claros y justos.',
-      'Ofrece oportunidades de refuerzo y nivelación cuando mi hijo(a) presenta dificultades.']},
+      'Ofrece oportunidades de refuerzo y nivelación cuando mi hijo(a) presenta dificultades.'],
+   D:['Reflexiona sistemáticamente sobre su práctica pedagógica y su impacto en el aprendizaje de los estudiantes.']},
   {cod:'UR',tipo:'F',area:'Gestión administrativa',nombre:'Uso de recursos',
-   E:['Promueve el buen uso y cuidado del laboratorio, los materiales y los equipos de la institución.',
+   E:['Promueve el buen uso y cuidado del laboratorio, los materiales, los equipos y el mobiliario.',
       'Aprovecha los recursos disponibles (laboratorio, sala de informática, materiales reciclables, plataformas).'],
-   A:[]},
+   A:['Ha establecido normas claras para mantener el orden en el aula y cuidar el mobiliario y los materiales.'],
+   D:['Prevé y gestiona los recursos necesarios para el desarrollo de su actividad pedagógica.',
+      'Solicita y devuelve los equipos y espacios que requiere para su práctica pedagógica oportunamente y siguiendo los procedimientos establecidos.',
+      'Distribuye con eficiencia entre sus estudiantes los recursos asignados.',
+      'Hace un uso responsable de los equipos e instalaciones de la institución y los mantiene en buen estado.',
+      'Promueve entre sus estudiantes el buen manejo y uso racional de la infraestructura y los recursos del establecimiento.']},
   {cod:'SP',tipo:'F',area:'Gestión administrativa',nombre:'Seguimiento de procesos',
-   E:['Lleva un registro organizado de asistencia, trabajos y calificaciones.',
-      'Me informa oportunamente cómo voy en la asignatura y qué debo mejorar.'],
-   A:['Me informa oportunamente sobre el desempeño académico y el comportamiento de mi hijo(a).',
-      'Realiza seguimiento a los compromisos acordados con la familia.']},
+   E:['Atiende las dudas académicas de los estudiantes fuera de clase.',
+      'Me informa oportunamente cómo voy en la asignatura y qué debo mejorar.',
+      'Lleva un registro organizado de asistencia, trabajos y calificaciones.'],
+   A:['Mi hijo(a) recibió oportunamente orientación del docente en su proceso de aprendizaje.',
+      'Me informa oportunamente sobre el desempeño académico y el comportamiento de mi hijo(a).'],
+   D:['Desarrolla sus actividades de acuerdo con el calendario y la jornada escolar.',
+      'Interactúa efectivamente con las diferentes instancias de la institución para optimizar el desarrollo de sus propias actividades.',
+      'Asiste a las reuniones académicas y administrativas convocadas y participa activamente en ellas.',
+      'Apoya el análisis de la autoevaluación institucional, la actualización del Proyecto Educativo Institucional y el desarrollo de nuevas iniciativas.']},
   {cod:'CI',tipo:'F',area:'Gestión comunitaria',nombre:'Comunicación institucional',
-   E:['Da a conocer y aplica el Manual de Convivencia y el Sistema Institucional de Evaluación (SIE).'],
-   A:['Utiliza canales de comunicación adecuados y respetuosos con las familias (agenda, plataforma, reuniones).',
-      'Atiende a los acudientes en los horarios establecidos y con disposición.']},
+   E:['Indica normas claras de comportamiento en clase para todos.',
+      'Da a conocer y aplica el Manual de Convivencia y el Sistema Institucional de Evaluación (SIE).'],
+   A:['Me es fácil comunicarme con el docente de esta asignatura.',
+      'Atiende a los acudientes en los horarios establecidos y con disposición.'],
+   D:['Promueve actividades con diferentes miembros de la comunidad educativa para fortalecer la identidad institucional.',
+      'Participa en los escenarios definidos por las directivas para apoyar la toma de decisiones.']},
   {cod:'IC',tipo:'F',area:'Gestión comunitaria',nombre:'Interacción con la comunidad y el entorno',
    E:['Relaciona los temas con problemas de nuestro entorno (energía, ambiente, transporte, tecnología).',
       'Promueve actividades o proyectos que vinculan a la institución con la comunidad (ferias, salidas, proyectos).'],
-   A:['Brinda orientaciones para que la familia pueda apoyar el aprendizaje en casa.',
-      'Promueve la participación de las familias en actividades institucionales.']},
+   A:['Brinda orientaciones para que la familia pueda apoyar el aprendizaje en casa.'],
+   D:['Custodia la aplicación y el cumplimiento del Manual de Convivencia en los diferentes espacios de la institución.',
+      'Se compromete con acciones dirigidas a la prevención de diferentes tipos de riesgos.']},
   {cod:'LI',tipo:'C',area:'Comportamentales',nombre:'Liderazgo',
-   E:['Orienta al grupo con autoridad y respeto, y es un ejemplo positivo para los estudiantes.'],
-   A:['Es un referente positivo para mi hijo(a).']},
+   E:['Es respetado por todos los estudiantes del curso.',
+      'Orienta al grupo con autoridad y respeto, y es un ejemplo positivo para los estudiantes.'],
+   A:['Es un referente positivo para mi hijo(a).'],
+   D:['Fomenta el respeto por los valores entre sus superiores, colegas y estudiantes.',
+      'Transmite con sus acciones a la comunidad educativa la visión, la misión, los objetivos y los valores institucionales.',
+      'Influye positivamente en el comportamiento de los demás y logra que se comprometan con el logro de metas comunes.',
+      'Plantea orientaciones convincentes, expresa expectativas positivas de los demás y demuestra interés por el desarrollo de las personas.']},
   {cod:'CR',tipo:'C',area:'Comportamentales',nombre:'Comunicación y relaciones interpersonales',
-   E:['Trata a los estudiantes con respeto y amabilidad.','Escucha nuestras opiniones, inquietudes y sugerencias.'],
-   A:['Trata con respeto y cordialidad a los estudiantes y a sus familias.']},
+   E:['Trata a los estudiantes con respeto y amabilidad.',
+      'Escucha nuestras opiniones, inquietudes y sugerencias.'],
+   A:['Es cordial y respetuoso en el trato con padres de familia y estudiantes.',
+      'Fomenta el respeto entre los estudiantes en el aula.'],
+   D:['Acepta críticas constructivas y actúa en consecuencia.',
+      'Muestra respeto hacia los estudiantes, el equipo docente, los directivos, el personal administrativo y la comunidad.']},
   {cod:'TE',tipo:'C',area:'Comportamentales',nombre:'Trabajo en equipo',
-   E:['Fomenta el trabajo colaborativo y el apoyo entre compañeros.'],A:[]},
+   E:['Fomenta el trabajo colaborativo y el apoyo entre compañeros.'],
+   A:[],
+   D:['Aporta sugerencias, ideas y opiniones y propicia la conformación de equipos para el desarrollo de proyectos.',
+      'Establece relaciones profesionales y de equipo que potencien su trabajo y el logro de las metas institucionales.',
+      'Comparte aprendizajes y recursos con diferentes miembros de la institución y ofrece apoyo para el trabajo de otros.']},
   {cod:'NM',tipo:'C',area:'Comportamentales',nombre:'Negociación y mediación',
    E:['Maneja los conflictos del aula de manera justa, por medio del diálogo y la concertación.'],
-   A:['Ante dificultades o desacuerdos, busca soluciones mediante el diálogo.']},
+   A:['Ante dificultades o desacuerdos, busca soluciones mediante el diálogo.'],
+   D:['Considera las contribuciones de los demás en la toma de decisiones.']},
   {cod:'CS',tipo:'C',area:'Comportamentales',nombre:'Compromiso social e institucional',
-   E:['Es puntual y cumple con el horario de clase.','Promueve valores como la honestidad, la responsabilidad y el cuidado del ambiente.'],
-   A:['Demuestra compromiso con la formación integral de mi hijo(a).']},
+   E:['Sus clases empiezan y terminan a la hora indicada.',
+      'Promueve valores como la honestidad, la responsabilidad y el cuidado del ambiente.'],
+   A:['Observo sensibilidad social del docente hacia mi hijo(a).',
+      'Los comentarios que escucho indican que hace su trabajo de manera responsable y eficiente.'],
+   D:['Acata y divulga las normas y políticas nacionales, regionales e institucionales.',
+      'Cumple eficientemente su jornada laboral.',
+      'Exhibe un comportamiento ético dentro y fuera del establecimiento y representa adecuadamente a la institución en actividades fuera de la misma.',
+      'Demuestra honestidad e integridad en su ejercicio profesional.',
+      'Reflexiona sistemáticamente sobre su responsabilidad social como educador.']},
   {cod:'IN',tipo:'C',area:'Comportamentales',nombre:'Iniciativa',
-   E:['Propone actividades novedosas y creativas para aprender (retos, proyectos, laboratorios, videos).'],A:[]},
+   E:['Propone actividades novedosas y creativas para aprender (retos, proyectos, laboratorios, videos).'],
+   A:[],
+   D:['Promueve cambios y transformaciones que aumenten la capacidad institucional e impulsen el mejoramiento.']},
   {cod:'OL',tipo:'C',area:'Comportamentales',nombre:'Orientación al logro',
-   E:['Tiene altas expectativas de lo que podemos lograr y nos anima a superarnos.','Se esfuerza para que todos los estudiantes aprendan.'],
-   A:['Se preocupa porque mi hijo(a) alcance los desempeños esperados.']},
+   E:['Tiene altas expectativas de lo que podemos lograr y nos anima a superarnos.',
+      'Se esfuerza para que todos los estudiantes aprendan.'],
+   A:['Fomenta la participación de los estudiantes y les brinda confianza y apoyo para que alcancen los desempeños esperados.'],
+   D:['Responde con oportunidad, eficiencia y calidad a las tareas que se le asignan.']},
 ];
 
 const PASOS = [
@@ -249,7 +295,11 @@ const PASOS = [
 const ABIERTAS = {
   E:[['fortalezas','¿Qué es lo que más valoras de las clases de este docente?'],['mejoras','¿Qué le recomiendas mejorar?']],
   A:[['fortalezas','¿Qué fortalezas reconoce en el trabajo de este docente?'],['mejoras','¿Qué sugerencias le haría para mejorar?']],
+  D:[['fortalezas','¿Qué fortalezas reconoce en el trabajo de este compañero(a)?'],['mejoras','¿Qué sugerencias le haría para mejorar?']],
 };
+
+const ROLES = {'Estudiante':'E', 'Madre, padre o acudiente':'A', 'Docente, directivo o administrativo':'D'};
+const CARGOS = ['Docente de aula', 'Directivo docente', 'Administrativo'];
 
 /* ═════════════════ ESTADO Y RENDER ═════════════════ */
 const app = document.getElementById('app');
@@ -274,12 +324,12 @@ function bienvenida(){
   montar(`
     <p class="eyebrow">Evaluación de desempeño · ${CONFIG.ANIO}</p>
     <h1>Tu opinión también <em>mueve</em> la enseñanza.</h1>
-    <p class="lead">Esta encuesta recoge la percepción de estudiantes y familias sobre el trabajo del docente de ${esc(CONFIG.AREA)} durante el año ${CONFIG.ANIO}. Es anónima, toma unos 7 minutos y sus resultados se usan como evidencia de la evaluación anual de desempeño y para mejorar las clases.</p>
+    <p class="lead">Esta encuesta recoge la percepción de estudiantes, familias y compañeros sobre el trabajo del docente de ${esc(CONFIG.AREA)} durante el año ${CONFIG.ANIO}. Es anónima, toma entre 6 y 9 minutos y sus resultados se usan como evidencia de la evaluación anual de desempeño y para mejorar las clases.</p>
     <div class="datos">
       <div class="dato"><b>Institución</b><span>${esc(CONFIG.INSTITUCION)}</span></div>
       <div class="dato"><b>Docente</b><span>${esc(CONFIG.DOCENTE)}</span></div>
       <div class="dato"><b>Área</b><span>${esc(CONFIG.AREA)}</span></div>
-      <div class="dato"><b>Duración</b><span>≈ 7 minutos · anónima</span></div>
+      <div class="dato"><b>Responden</b><span>Estudiantes · familias · docentes</span></div>
     </div>
     ${CONFIG.ENDPOINT ? '' : '<p class="aviso">Modo de prueba: esta versión todavía no guarda las respuestas.</p>'}
     <p class="marco">Las preguntas siguen las competencias de la <b>Guía No. 31 del MEN</b>: funcionales (gestión académica, administrativa y comunitaria) y comportamentales.</p>
@@ -298,28 +348,37 @@ function datosGenerales(){
   montar(`
     <p class="eyebrow">Antes de empezar</p>
     <h2>¿Quién responde?</h2>
-    <p class="sub">Según tu respuesta verás preguntas pensadas para estudiantes o para familias.</p>
-    <fieldset style="margin-top:22px"><legend>Respondo como</legend><div class="opciones">${op('rol',['Estudiante','Madre, padre o acudiente'],est.rol)}</div></fieldset>
-    <fieldset><legend>Grado del estudiante</legend><div class="opciones">${op('grado',CONFIG.GRADOS,est.grado)}</div></fieldset>
+    <p class="sub">Según tu respuesta verás preguntas pensadas para estudiantes, familias o compañeros de trabajo.</p>
+    <fieldset style="margin-top:22px"><legend>Respondo como</legend><div class="opciones">${op('rol',Object.keys(ROLES),est.rol)}</div></fieldset>
+    <fieldset data-para="EA"><legend>Grado del estudiante</legend><div class="opciones">${op('grado',CONFIG.GRADOS,est.grado)}</div></fieldset>
+    <fieldset data-para="A"><legend>¿Identifica usted al docente que orienta ${esc(CONFIG.AREA)} a su hijo(a) o acudido(a)?</legend><div class="opciones">${op('identifica',['Sí','No'],est.identifica)}</div></fieldset>
+    <fieldset data-para="D"><legend>Me desempeño como</legend><div class="opciones">${op('cargo',CARGOS,est.cargo)}</div></fieldset>
     <label class="consent"><input type="checkbox" id="acepto" ${est.acepto?'checked':''}>
       <span>Autorizo el tratamiento de mis respuestas con fines de evaluación y mejoramiento institucional (Ley 1581 de 2012). Entiendo que la encuesta es anónima y voluntaria.</span></label>
     <p class="aviso" id="aviso"></p>
     <div class="nav"><button class="btn sec" id="atras">← Inicio</button><button class="btn pri" id="sig">Continuar →</button></div>
   `);
+  const val = n => (app.querySelector(`input[name=${n}]:checked`) || {}).value;
+  const mostrar = () => { const p = ROLES[val('rol')] || '';
+    app.querySelectorAll('fieldset[data-para]').forEach(f => f.classList.toggle('oculto', !p || !f.dataset.para.includes(p))); };
+  app.querySelectorAll('input[name=rol]').forEach(i => i.onchange = mostrar); mostrar();
   $('#atras').onclick = bienvenida;
   $('#sig').onclick = () => {
-    const rol = app.querySelector('input[name=rol]:checked'), gr = app.querySelector('input[name=grado]:checked');
+    const rol = val('rol'), p = ROLES[rol];
     est.acepto = $('#acepto').checked;
-    if (!rol || !gr || !est.acepto){ $('#aviso').textContent = 'Selecciona quién responde, el grado y acepta la autorización para continuar.'; return; }
-    if (est.rol && est.rol !== rol.value) est.r = {};
-    est.rol = rol.value; est.grado = gr.value;
-    const p = est.rol === 'Estudiante' ? 'E' : 'A';
+    const faltan = !rol || (p !== 'D' && !val('grado')) || (p === 'A' && !val('identifica')) || (p === 'D' && !val('cargo'));
+    if (faltan || !est.acepto){ $('#aviso').textContent = 'Responde las preguntas de esta página y acepta la autorización para continuar.'; return; }
+    if (est.rol && est.rol !== rol) est.r = {};
+    est.rol = rol;
+    est.grado = p === 'D' ? '' : val('grado');
+    est.identifica = p === 'A' ? val('identifica') : '';
+    est.cargo = p === 'D' ? val('cargo') : '';
     pasosRol = PASOS.map(ps => ({...ps, comps: COMP.filter(c => ps.cods.includes(c.cod) && c[p].length)})).filter(ps => ps.comps.length);
     est.paso = 0; pasoLikert();
   };
 }
 
-const pub = () => est.rol === 'Estudiante' ? 'E' : 'A';
+const pub = () => ROLES[est.rol];
 
 function pasoLikert(){
   const ps = pasosRol[est.paso], p = pub(), total = pasosRol.length + 2;
@@ -372,7 +431,7 @@ function pasoAbiertas(){
     const btn = $('#enviar'); btn.disabled = true; btn.textContent = 'Enviando…';
     const textos = {};
     pasosRol.forEach(ps => ps.comps.forEach(c => c[p].forEach((t,i) => textos[`${c.cod}-${p}-${i+1}`] = t)));
-    const datos = { anio:CONFIG.ANIO, docente:CONFIG.DOCENTE, rol:est.rol, grado:est.grado,
+    const datos = { anio:CONFIG.ANIO, docente:CONFIG.DOCENTE, rol:est.rol, grado:est.grado, cargo:est.cargo, identifica:est.identifica,
       respuestas:est.r, textos, abiertas:est.abiertas, segundos:Math.round((Date.now()-est.inicio)/1000), web:$('#web').value };
     try {
       await enviar(datos);

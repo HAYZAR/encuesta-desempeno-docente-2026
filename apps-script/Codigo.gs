@@ -10,8 +10,9 @@
 
 const HOJA_RESP = 'Respuestas';
 const HOJA_INF = 'Informe Guía 31';
-const FIJAS = ['Marca temporal', 'Año', 'Docente', 'Rol', 'Grado', 'Duración (s)', 'Fortalezas', 'Mejoras'];
-const ROLES = ['Estudiante', 'Madre, padre o acudiente'];
+const FIJAS = ['Marca temporal', 'Año', 'Docente', 'Rol', 'Grado', 'Duración (s)', 'Fortalezas', 'Mejoras', 'Cargo', 'Identifica al docente'];
+const ROLES = ['Estudiante', 'Madre, padre o acudiente', 'Docente, directivo o administrativo'];
+const ETIQ = { E: 'Estudiante', A: 'Acudiente', D: 'Docente/Adm.' };
 
 // Competencias de la Guía 31 (deben coincidir con los códigos de index.html)
 const COMP = [
@@ -61,7 +62,7 @@ function doPost(e) {
     if (d.web) return json_({ ok: true }); // trampa anti-bots
     if (ROLES.indexOf(d.rol) < 0) throw new Error('Rol no válido');
     const resp = d.respuestas || {};
-    const claves = Object.keys(resp).filter(k => /^[A-Z]{2}-[EA]-\d{1,2}$/.test(k));
+    const claves = Object.keys(resp).filter(k => /^[A-Z]{2}-[EAD]-\d{1,2}$/.test(k));
     if (!claves.length) throw new Error('Sin respuestas');
     claves.forEach(k => { const v = Number(resp[k]); if (!(v >= 1 && v <= 5)) throw new Error('Valor fuera de escala'); });
 
@@ -71,6 +72,13 @@ function doPost(e) {
       configurar();
       const h = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(HOJA_RESP);
       let enc = h.getRange(1, 1, 1, h.getLastColumn()).getValues()[0];
+      // Columnas fijas que falten (p. ej., hojas creadas con una versión anterior)
+      const faltan = FIJAS.filter(f => enc.indexOf(f) < 0);
+      if (faltan.length) {
+        h.getRange(1, enc.length + 1, 1, faltan.length).setValues([faltan])
+          .setFontWeight('bold').setBackground('#1B2A4A').setFontColor('#F5F1E8');
+        enc = enc.concat(faltan);
+      }
       const textos = d.textos || {};
       // Agrega columnas nuevas para las afirmaciones que aún no existen
       const nuevas = claves.filter(k => !enc.some(c => String(c).split(' · ')[0] === k));
@@ -91,6 +99,8 @@ function doPost(e) {
           case 'Duración (s)': return Number(d.segundos) || '';
           case 'Fortalezas': return limpiar_(ab.fortalezas, 1500);
           case 'Mejoras': return limpiar_(ab.mejoras, 1500);
+          case 'Cargo': return limpiar_(d.cargo, 40);
+          case 'Identifica al docente': return limpiar_(d.identifica, 5);
           default: { const k = String(c).split(' · ')[0]; return resp[k] ? Number(resp[k]) : ''; }
         }
       });
@@ -115,25 +125,27 @@ function generarInforme() {
   const datos = h.getDataRange().getValues();
   const enc = datos[0], filas = datos.slice(1);
   const cRol = enc.indexOf('Rol'), cDoc = enc.indexOf('Docente');
-  const nE = filas.filter(r => r[cRol] === ROLES[0]).length, nA = filas.length - nE;
+  const cuenta = rol => filas.filter(r => r[cRol] === rol).length;
+  const nE = cuenta(ROLES[0]), nA = cuenta(ROLES[1]), nD = cuenta(ROLES[2]);
+  const etiq = rol => ETIQ['EAD'.charAt(ROLES.indexOf(rol))] || rol;
 
   const acc = {};
   enc.forEach((c, j) => {
-    const m = String(c).match(/^([A-Z]{2})-([EA])-\d+/);
+    const m = String(c).match(/^([A-Z]{2})-([EAD])-\d+/);
     if (!m) return;
-    acc[m[1]] = acc[m[1]] || { E: [], A: [] };
+    acc[m[1]] = acc[m[1]] || { E: [], A: [], D: [] };
     filas.forEach(r => { const v = Number(r[j]); if (v >= 1 && v <= 5) acc[m[1]][m[2]].push(v); });
   });
   const prom = a => a.length ? a.reduce((s, x) => s + x, 0) / a.length : null;
 
-  const tabla = [['Tipo', 'Área de gestión', 'Competencia', 'Estudiantes (1–5)', 'Acudientes (1–5)', 'General (1–5)', 'Equivalencia (1–100)', 'Nivel']];
+  const tabla = [['Tipo', 'Área de gestión', 'Competencia', 'Estudiantes (1–5)', 'Acudientes (1–5)', 'Docentes (1–5)', 'General (1–5)', 'Equivalencia (1–100)', 'Nivel']];
   const porTipo = { Funcional: [], Comportamental: [] };
   COMP.forEach(([cod, tipo, area, nombre]) => {
-    const a = acc[cod] || { E: [], A: [] };
-    const g = prom(a.E.concat(a.A));
+    const a = acc[cod] || { E: [], A: [], D: [] };
+    const g = prom(a.E.concat(a.A, a.D));
     const eq = g === null ? null : g * 20;
     if (eq !== null) porTipo[tipo].push(eq);
-    tabla.push([tipo, area, nombre, red_(prom(a.E)), red_(prom(a.A)), red_(g), red_(eq), nivel_(eq)]);
+    tabla.push([tipo, area, nombre, red_(prom(a.E)), red_(prom(a.A)), red_(prom(a.D)), red_(g), red_(eq), nivel_(eq)]);
   });
   const f = prom(porTipo.Funcional), c = prom(porTipo.Comportamental);
   const total = f !== null && c !== null ? f * 0.7 + c * 0.3 : null;
@@ -144,8 +156,8 @@ function generarInforme() {
   inf.getRange(1, 1, 5, 2).setValues([
     ['Informe de percepción del desempeño docente', ''],
     ['Docente', cDoc >= 0 ? filas[0][cDoc] : ''],
-    ['Fuente', 'Encuesta anónima a estudiantes y acudientes (H²B · Física)'],
-    ['Respuestas', `${filas.length} (estudiantes: ${nE} · acudientes: ${nA})`],
+    ['Fuente', 'Encuesta anónima a estudiantes, acudientes y docentes (H²B · Física)'],
+    ['Respuestas', `${filas.length} (estudiantes: ${nE} · acudientes: ${nA} · docentes y administrativos: ${nD})`],
     ['Fecha de corte', Utilities.formatDate(new Date(), tz, 'yyyy-MM-dd')],
   ]);
   inf.getRange(1, 1).setFontSize(15).setFontWeight('bold');
@@ -172,11 +184,11 @@ function generarInforme() {
     const txt = j < 0 ? [] : filas.map(x => [String(x[j]).trim(), x[cRol]]).filter(x => x[0]);
     if (!txt.length) return;
     inf.getRange(fila++, 1).setValue(tit).setFontWeight('bold').setFontSize(12);
-    txt.forEach(([t, rol]) => inf.getRange(fila++, 1, 1, 2).setValues([[rol === ROLES[0] ? 'Estudiante' : 'Acudiente', t]]));
+    txt.forEach(([t, rol]) => inf.getRange(fila++, 1, 1, 2).setValues([[etiq(rol), t]]));
     fila++;
   });
   inf.setColumnWidth(1, 260); inf.setColumnWidth(2, 220); inf.setColumnWidth(3, 300);
-  inf.setColumnWidths(4, 5, 130);
+  inf.setColumnWidths(4, 6, 130);
   ss.setActiveSheet(inf);
 }
 

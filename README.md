@@ -1,6 +1,6 @@
 # Encuesta de desempeño docente 2026 · H²B Física
 
-Encuesta web anónima para estudiantes y acudientes. Recoge la percepción sobre el desempeño docente como evidencia de la **Evaluación Anual de Desempeño Laboral** de los docentes del Decreto Ley 1278 de 2002, reglamentada por el Decreto 3782 de 2007 (compilado en el Decreto 1075 de 2015). Sigue la metodología de la **Guía No. 31 del MEN**.
+Encuesta web anónima para estudiantes, acudientes y compañeros (docentes, directivos y administrativos). Recoge la percepción sobre el desempeño docente como evidencia de la **Evaluación Anual de Desempeño Laboral** de los docentes del Decreto Ley 1278 de 2002, reglamentada por el Decreto 3782 de 2007 (compilado en el Decreto 1075 de 2015). Sigue la metodología de la **Guía No. 31 del MEN**.
 
 - **Página:** `index.html`, publicada con GitHub Pages.
 - **Respuestas:** una hoja de cálculo de Google las recibe por medio de Apps Script (`apps-script/Codigo.gs`).
@@ -9,8 +9,11 @@ Encuesta web anónima para estudiantes y acudientes. Recoge la percepción sobre
 
 | Público | Afirmaciones | Competencias |
 |---|---|---|
-| Estudiantes | 35 + 2 abiertas | las 15 de la Guía 31 |
-| Acudientes | 16 + 2 abiertas | las 12 que una familia puede observar |
+| Estudiantes | 38 + 2 abiertas | las 15 de la Guía 31 |
+| Acudientes | 18 + 2 abiertas | las 13 que una familia puede observar |
+| Docentes, directivos y administrativos | 36 + 2 abiertas | las 15 de la Guía 31 |
+
+Las afirmaciones integran las preguntas de las encuestas institucionales anteriores («Encuesta a Estudiantes», «Encuesta a Acudientes» y «Encuesta a compañeros docentes y/o administrativo»), cada una asignada a su competencia.
 
 - **Competencias funcionales (70 %)**
   - Gestión académica: dominio curricular, planeación y organización académica, pedagogía y didáctica, evaluación del aprendizaje.
@@ -30,6 +33,13 @@ Encuesta web anónima para estudiantes y acudientes. Recoge la percepción sobre
    - **Quién tiene acceso:** Cualquier usuario.
 5. Copie la URL que termina en `/exec` y péguela en `index.html`, en `CONFIG.ENDPOINT`. Mientras no la pegue, la página muestra «Modo de prueba» y no guarda respuestas.
 6. En `CONFIG`, escriba también el nombre del docente (`DOCENTE`) y, si quiere, la fecha de cierre (`CIERRE`).
+
+## Actualizar el Apps Script sin cambiar la URL
+
+Cuando cambie `Codigo.gs`:
+1. Pegue la versión nueva en el editor de Apps Script y guarde.
+2. Abra **Implementar → Gestionar implementaciones**, pulse el lápiz (Editar) y, en **Versión**, elija **Nueva versión**.
+3. Pulse **Implementar**. La URL `/exec` no cambia.
 
 ## Generar el informe (evidencia)
 
